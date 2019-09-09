@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "AssignTask";
+}
+
+<h2>AssignTask</h2>
+@using (Html.BeginForm())
+{
+    @Html.DropDownList("DeveloperId", "Select Developer")
+    @Html.DropDownList("TaskId", "Select Task")
+
+    <input type="submit" value="Assign Task" />
+}

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Project_Management_App.Models.UserTask>
+
+@{
+    ViewBag.Title = "TaskByPriority";
+}
+
+<h2>TaskByPriority</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Project.ProjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletedPercentage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsTaskCompleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deadline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.priority)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.ProjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletedPercentage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsTaskCompleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deadline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.priority)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UserTaskId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.UserTaskId }) |
+            </td>
+        </tr>
+    }
+
+</table>
