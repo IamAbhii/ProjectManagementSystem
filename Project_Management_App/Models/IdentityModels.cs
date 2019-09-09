@@ -93,7 +93,6 @@ namespace Project_Management_App.Models
         public DbSet<Note> Notes { get; set; }
         public DbSet<UserTask> Tasks { get; set; }
         public DbSet<NotificationForUser> NotificationsForUser { get; set; }
-
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
