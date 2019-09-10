@@ -266,6 +266,7 @@
     <Content Include="Views\UserTasks\AssignTask.cshtml" />
     <Content Include="Views\UserTasks\GetUsersTask.cshtml" />
     <Content Include="Views\UserTasks\TaskByPriority.cshtml" />
+    <Content Include="Views\Projects\GetUsersAllNotifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

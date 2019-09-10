@@ -19,7 +19,7 @@ namespace Project_Management_App.Models
             var tasks = user.Tasks;
             foreach (var task in tasks)
             {
-                if (!task.IsTaskAddedToNotification && task.Deadline < DateTime.Now && !task.IsTaskCompleted && !task.IsTaskAddedToNotification)
+                if (!task.IsTaskAddedToNotification && task.Deadline < DateTime.Now && !task.IsTaskCompleted)
                 {
 
                     var notification = new NotificationForUser()
@@ -36,6 +36,12 @@ namespace Project_Management_App.Models
                     db.SaveChanges();
                 }
             }
+        }
+
+        public  List<NotificationForUser> GetNotificationForUsers(string userId)
+        {
+            var notifications = db.NotificationsForUser.Where(x => x.user.Id == userId).ToList();
+            return notifications;
         }
     }
 }

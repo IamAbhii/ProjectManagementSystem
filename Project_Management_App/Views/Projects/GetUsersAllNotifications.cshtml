@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Project_Management_App.Models.NotificationForUser>
+
+@{
+    ViewBag.Title = "GetUsersAllNotifications";
+}
+
+<h2>GetUsersAllNotifications</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IsOpened)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurrentTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOpened)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentTime)
+        </td>
+        <td>
+            @Html.ActionLink("Mark Read", "Edit", new { id=item.NotificationForUserId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NotificationForUserId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NotificationForUserId })
+        </td>
+    </tr>
+}
+
+</table>

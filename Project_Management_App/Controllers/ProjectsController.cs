@@ -29,7 +29,12 @@ namespace Project_Management_App.Controllers
             notificationManager.AddNotification(User.Identity.GetUserId());
             return View(db.Projects.ToList());
         }
-
+        [Authorize(Roles = "ProjectManager,Developer")]
+        public ActionResult GetUsersAllNotifications()
+        {
+            var notification = notificationManager.GetNotificationForUsers(User.Identity.GetUserId());
+            return View(notification);
+        }
         // GET: Projects/Details/5
         public ActionResult Details(int? id)
         {
