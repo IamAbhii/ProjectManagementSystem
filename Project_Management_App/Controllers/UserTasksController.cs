@@ -66,10 +66,18 @@ namespace Project_Management_App.Controllers
         {
             var Task = db.Tasks.Find(TaskId);
             var Devloper = db.Users.Find(DeveloperId);
-            Devloper.Tasks.Add(Task);
-
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (!Devloper.Tasks.Contains(Task))
+            {
+                Devloper.Tasks.Add(Task);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }           
+            else
+            {
+                TempData["message"] = "This task is already assign to this user";
+                return View("Viewbag");
+            }
+                       
         }
 
         // GET: UserTasks
@@ -181,6 +189,11 @@ namespace Project_Management_App.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Viewbag(string Message)
+        {
+            ViewBag.Message = Message;
+            return View();
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
